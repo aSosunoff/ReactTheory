@@ -1,26 +1,75 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import Car from './Car/';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+	state = {
+		pageTitle: 'React components',
+		cars: [
+			{ name: 'Ford Focuse', year: 2010 },
+			{ name: 'Mazda', year: 2015 },
+			{ name: 'Ferrari', year: 2030 },
+		],
+		showCars: false,
+		buttonShowCarsTitle: 'Показать',
+	};
+
+	toggleCarsHandler = () => {
+		this.setState({
+			showCars: !this.state.showCars,
+			buttonShowCarsTitle: this.state.showCars ? 'Показать' : 'Спрятать',
+		});
+	};
+
+	changeTitleHandler = pageTitle => {
+		this.setState({ pageTitle });
+	};
+
+	deleteHandler = inx => {
+		const cars = [...this.state.cars];
+		cars.splice(inx, 1);
+		this.setState({
+			cars,
+		});
+	};
+
+	changeInputTitleHandler = (inx, title) => {
+		const cars = [...this.state.cars];
+		cars[inx] = { ...this.state.cars[inx], name: title };
+		this.setState({
+			cars,
+		});
+	};
+
+	render() {
+		let cars = null;
+
+		if (this.state.showCars) {
+			cars = this.state.cars.map((car, inx) => {
+				return (
+					<Car
+						key={inx}
+						data={car}
+						onChangeTitle={this.changeTitleHandler}
+						onDelete={this.deleteHandler.bind(this, inx)}
+						onChangeInputTitle={({ target: { value } }) => this.changeInputTitleHandler(inx, value)}
+					/>
+				);
+			});
+		}
+
+		return (
+			<div className="app">
+				<h1>{this.state.pageTitle}</h1>
+
+				<button onClick={this.toggleCarsHandler}>{this.state.buttonShowCarsTitle}</button>
+
+				<div className="car-list">
+					{cars}
+				</div>
+			</div>
+		);
+	}
 }
 
 export default App;

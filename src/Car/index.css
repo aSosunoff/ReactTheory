@@ -1,0 +1,24 @@
+.car {
+    border: 1px solid rgb(141, 141, 141);
+    border-radius: 5px;
+	padding: 10px 0px;
+	margin-bottom: 15px;
+	box-shadow: 3px 4px 6px rgb(141, 141, 141);
+}
+
+.car .input {
+	padding: 5px;
+	border-radius: 5px;
+	border: 2px #ddd solid;
+	width: 90%;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.car .input.green {
+    border: 2px #3fdf3f solid;
+}
+
+.car .input.red {
+    border: 2px #ffb6b6 solid;
+}
