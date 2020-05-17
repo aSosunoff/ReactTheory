@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.module.css';
 import Car from './Car/';
 
 class App extends Component {
@@ -59,14 +59,14 @@ class App extends Component {
 		}
 
 		return (
-			<div className="app">
+			<div className={classes.app}>
 				<h1>{this.state.pageTitle}</h1>
 
 				<p>
 					<button onClick={this.toggleCarsHandler}>{this.state.buttonShowCarsTitle}</button>
 				</p>
 
-				<div className="car-list">{cars}</div>
+				<div className={classes['car-list']}>{cars}</div>
 			</div>
 		);
 	}

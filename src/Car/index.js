@@ -1,5 +1,5 @@
 import React from 'react';
-import './index.css';
+import classes from './index.module.css';
 import Radium from 'radium';
 
 const Car = ({
@@ -8,14 +8,14 @@ const Car = ({
 	onDelete = () => {},
 	onChangeInputTitle = () => {},
 } = {}) => {
-	const classInput = ['input'];
+	const classInput = [classes.input];
 
 	if (name.length > 0 && name.length <= 10) {
-		classInput.push('green');
+		classInput.push(classes.green);
 	} 
 	
 	if (name.length > 10) {
-		classInput.push('red');
+		classInput.push(classes.red);
 	}
 
 	const style = {
@@ -27,7 +27,7 @@ const Car = ({
 	}
 
 	return (
-		<div className="car" style={style}>
+		<div className={classes.car} style={style}>
 			<h3>Car name: {name}</h3>
 			<p>Year: {year}</p>
 			<button onClick={onChangeTitle.bind(this, name)}>Click</button>
