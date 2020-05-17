@@ -13,8 +13,8 @@ class App extends React.Component {
 			pageTitle: props.title,
 			cars: [
 				{ name: 'Ford Focuse', year: 2010 },
-				/* { name: 'Mazda', year: 2015 },
-				{ name: 'Ferrari', year: 2030 }, */
+				{ name: 'Mazda', year: 2015 },
+				{ name: 'Ferrari', year: 2030 },
 			],
 			showCars: false,
 			buttonShowCarsTitle: 'Показать',
