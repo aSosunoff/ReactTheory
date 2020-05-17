@@ -35,10 +35,6 @@ class Car extends React.Component {
 	}
 
 	render() {
-		if (this.props.name === "Ford Focuse") {
-			throw new Error("Ошибка");
-		}
-		
 		console.log('Car render');
 
 		const classInput = [classes.input];
