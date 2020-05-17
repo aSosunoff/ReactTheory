@@ -68,6 +68,7 @@ class App extends React.Component {
 						<Car
 							name={name}
 							year={year}
+							index={inx}
 							onChangeTitle={this.changeTitleHandler}
 							onDelete={this.deleteHandler.bind(this, inx)}
 							onChangeInputTitle={({ target: { value } }) =>
@@ -88,6 +89,8 @@ class App extends React.Component {
 				<p>
 					<button onClick={this.toggleCarsHandler}>{this.state.buttonShowCarsTitle}</button>
 				</p>
+
+				<hr/>
 
 				<div className={classes['car-list']}>{cars}</div>
 			</div>

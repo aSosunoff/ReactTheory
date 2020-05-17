@@ -1,10 +1,14 @@
 import React from 'react';
 import classes from './index.module.css';
 // import Radium from 'radium';
-import withClass from '../hoc/withClass'
+import withClass from '../hoc/withClass';
 import PropTypes from 'prop-types';
 
 class Car extends React.Component {
+	constructor(props) {
+		super(props);
+		this.inputRef = React.createRef();
+	}
 	/* static getDerivedStateFromProps(nextProps, prevState) {
 		console.log('Car getDerivedStateFromProps', nextProps, prevState);
 		return prevState;
@@ -36,6 +40,12 @@ class Car extends React.Component {
 		console.log('Car componentWillUnmount');
 	} */
 
+	componentDidMount() {
+		if (this.props.index === 0) {
+			this.inputRef.current.focus();
+		}
+	}
+
 	render() {
 		/* console.log('Car render'); */
 
@@ -57,6 +67,7 @@ class Car extends React.Component {
 				<button onClick={this.props.onDelete}>Удалить</button>
 				<p>
 					<input
+						ref={this.inputRef}
 						className={classInput.join(' ')}
 						type="text"
 						onChange={this.props.onChangeInputTitle}
@@ -71,10 +82,11 @@ class Car extends React.Component {
 Car.propTypes = {
 	name: PropTypes.string.isRequired,
 	year: PropTypes.number,
+	index: PropTypes.number,
 	onChangeTitle: PropTypes.func,
 	onDelete: PropTypes.func,
 	onChangeInputTitle: PropTypes.func,
-}
+};
 
 // export default Radium(Car);
 export default withClass(Car, classes.car);
