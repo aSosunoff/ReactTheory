@@ -2,6 +2,7 @@ import React from 'react';
 import classes from './index.module.css';
 // import Radium from 'radium';
 import withClass from '../hoc/withClass'
+import PropTypes from 'prop-types';
 
 class Car extends React.Component {
 	/* static getDerivedStateFromProps(nextProps, prevState) {
@@ -65,6 +66,14 @@ class Car extends React.Component {
 			</>
 		);
 	}
+}
+
+Car.propTypes = {
+	name: PropTypes.string.isRequired,
+	year: PropTypes.number,
+	onChangeTitle: PropTypes.func,
+	onDelete: PropTypes.func,
+	onChangeInputTitle: PropTypes.func,
 }
 
 // export default Radium(Car);
