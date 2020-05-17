@@ -6,7 +6,7 @@ import Counter from './Counter/';
 
 class App extends React.Component {
 	constructor(props) {
-		console.log('App constructor');
+		/* console.log('App constructor'); */
 		super(props);
 
 		this.state = {
@@ -48,16 +48,16 @@ class App extends React.Component {
 		});
 	};
 
-	UNSAFE_componentWillMount() {
+	/* UNSAFE_componentWillMount() {
 		console.log('App componentWillMount');
-	}
+	} */
 
-	componentDidMount() {
+	/* componentDidMount() {
 		console.log('App componentDidMount');
-	}
+	} */
 
 	render() {
-		console.log('App render');
+		/* console.log('App render'); */
 
 		let cars = null;
 

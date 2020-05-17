@@ -11,6 +11,12 @@
 	-o-transition: all .2s linear;
 }
 
+.car:hover {
+	border: 1px solid rgb(141, 141, 141);
+	box-shadow: 3px 4px 6px rgb(141, 141, 141);
+	cursor: pointer;
+}
+
 .car .input {
 	padding: 5px;
 	border-radius: 5px;
