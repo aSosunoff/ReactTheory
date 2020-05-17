@@ -1,18 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
 import classes from './App.module.css';
 import Car from './Car/';
+import ErrorBoundary from './ErrorBoundary/';
 
-class App extends Component {
-	state = {
-		pageTitle: 'React components',
-		cars: [
-			{ name: 'Ford Focuse', year: 2010 },
-			{ name: 'Mazda', year: 2015 },
-			{ name: 'Ferrari', year: 2030 },
-		],
-		showCars: false,
-		buttonShowCarsTitle: 'Показать',
-	};
+class App extends React.Component {
+	constructor(props) {
+		console.log('App constructor');
+		super(props);
+
+		this.state = {
+			pageTitle: props.title,
+			cars: [
+				{ name: 'Ford Focuse', year: 2010 },
+				{ name: 'Mazda', year: 2015 },
+				{ name: 'Ferrari', year: 2030 },
+			],
+			showCars: false,
+			buttonShowCarsTitle: 'Показать',
+		};
+	}
 
 	toggleCarsHandler = () => {
 		this.setState({
@@ -41,19 +47,33 @@ class App extends Component {
 		});
 	};
 
+	UNSAFE_componentWillMount() {
+		console.log('App componentWillMount');
+	}
+
+	componentDidMount() {
+		console.log('App componentDidMount');
+	}
+
 	render() {
+		console.log('App render');
+
 		let cars = null;
 
 		if (this.state.showCars) {
-			cars = this.state.cars.map((car, inx) => {
+			cars = this.state.cars.map(({ name, year }, inx) => {
 				return (
-					<Car
-						key={inx}
-						data={car}
-						onChangeTitle={this.changeTitleHandler}
-						onDelete={this.deleteHandler.bind(this, inx)}
-						onChangeInputTitle={({ target: { value } }) => this.changeInputTitleHandler(inx, value)}
-					/>
+					<ErrorBoundary key={inx}>
+						<Car
+							name={name}
+							year={year}
+							onChangeTitle={this.changeTitleHandler}
+							onDelete={this.deleteHandler.bind(this, inx)}
+							onChangeInputTitle={({ target: { value } }) =>
+								this.changeInputTitleHandler(inx, value)
+							}
+						/>
+					</ErrorBoundary>
 				);
 			});
 		}
