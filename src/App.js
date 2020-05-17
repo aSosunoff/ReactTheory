@@ -62,11 +62,11 @@ class App extends Component {
 			<div className="app">
 				<h1>{this.state.pageTitle}</h1>
 
-				<button onClick={this.toggleCarsHandler}>{this.state.buttonShowCarsTitle}</button>
+				<p>
+					<button onClick={this.toggleCarsHandler}>{this.state.buttonShowCarsTitle}</button>
+				</p>
 
-				<div className="car-list">
-					{cars}
-				</div>
+				<div className="car-list">{cars}</div>
 			</div>
 		);
 	}
