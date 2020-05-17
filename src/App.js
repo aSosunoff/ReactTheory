@@ -4,6 +4,8 @@ import Car from './Car/';
 import ErrorBoundary from './ErrorBoundary/';
 import Counter from './Counter/';
 
+export const ClickedContext = React.createContext(false);
+
 class App extends React.Component {
 	constructor(props) {
 		/* console.log('App constructor'); */
@@ -18,6 +20,7 @@ class App extends React.Component {
 			],
 			showCars: false,
 			buttonShowCarsTitle: 'Показать',
+			clicked: false,
 		};
 	}
 
@@ -84,13 +87,19 @@ class App extends React.Component {
 			<div className={classes.app}>
 				<h1>{this.state.pageTitle}</h1>
 
-				<Counter />
+				<ClickedContext.Provider value={this.state.clicked}>
+					<Counter />
+				</ClickedContext.Provider>
 
 				<p>
 					<button onClick={this.toggleCarsHandler}>{this.state.buttonShowCarsTitle}</button>
 				</p>
 
-				<hr/>
+				<p>
+					<button onClick={() => this.setState({ clicked: true })}>Clicked</button>
+				</p>
+
+				<hr />
 
 				<div className={classes['car-list']}>{cars}</div>
 			</div>
