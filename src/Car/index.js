@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './index.module.css';
 // import Radium from 'radium';
+import withClass from '../hoc/withClass'
 
 class Car extends React.Component {
 	/* static getDerivedStateFromProps(nextProps, prevState) {
@@ -48,7 +49,7 @@ class Car extends React.Component {
 		}
 
 		return (
-			<div className={classes.car}>
+			<>
 				<h3>Car name: {this.props.name}</h3>
 				<p>Year: {this.props.year}</p>
 				<button onClick={this.props.onChangeTitle.bind(this, this.props.name)}>Click</button>
@@ -61,10 +62,10 @@ class Car extends React.Component {
 						value={this.props.name}
 					/>
 				</p>
-			</div>
+			</>
 		);
 	}
 }
 
 // export default Radium(Car);
-export default Car;
+export default withClass(Car, classes.car);
