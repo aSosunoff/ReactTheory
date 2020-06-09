@@ -7,33 +7,31 @@ class Counter extends React.Component {
 		count: 0,
 	}; */
 
-	plus = () => {
+	/* plus = () => {
         this.setState((prevState) => {
             return {
                 count: prevState.count + 1
             }
         })
-	};
+	}; */
 
-	minus = () => {
+	/* minus = () => {
 		this.setState((prevState) => {
             return {
                 count: this.state.count - 1,
             }
         });
-	};
+	}; */
 
 	addCounter = () => {};
 
 	render() {
-		console.log(this.props);
-
 		return (
 			<>
 				<h2>Counter {this.props.counter}</h2>
 				<Counter2 />
-				<button onClick={this.plus}>+</button>
-				<button onClick={this.minus}>-</button>
+				<button onClick={this.props.onAdd}>+</button>
+				<button onClick={this.props.onSub}>-</button>
 			</>
 		);
 	}
@@ -45,4 +43,11 @@ const mapStateToProps = state => {
 	};
 };
 
-export default connect(mapStateToProps)(Counter);
+const mapDispatchToProps = dispatch => {
+	return {
+		onAdd: () => dispatch({type: 'ADD'}),
+		onSub: () => dispatch({type: 'SUB'})
+	};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Counter);
