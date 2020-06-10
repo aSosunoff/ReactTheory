@@ -15,3 +15,11 @@ export const addNumber = number => {
 export const add2 = number => {
 	return { type: ADD2, payload: number };
 };
+
+export const addAsyncNumber = number => {
+	return dispatch => {
+		setTimeout(() => {
+			dispatch(addNumber(number));
+		}, 3000);
+	};
+};
